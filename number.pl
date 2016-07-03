@@ -8,10 +8,10 @@ for(my $i = 0; $i < $#people; $i++){
 
 $round = 0;  #周回回数
 $index = 0;  #配列の位置
-for(my $n = 0; $n < 100; $n++){
+for(my $n = 0; $n < 3; $n++){
   $count = 0;  #追加された人数
   $member = "";
-  for(my $i = $index; ;$i++){  #人数分回す
+  for(my $i = $index; ;$i++){  #人数s分回す
     # 配列の長さを超えたらindexの位置を配列の最初に戻す
     if($i >= $#people){
       $round++;
@@ -30,5 +30,15 @@ for(my $n = 0; $n < 100; $n++){
       last;
     }
   }
+  &reCreateMember($member);
   print $member."\n";
+}
+
+sub reCreateMember{
+  $str = $_[0];  #引数を置き換える
+  @array = ();
+  foreach $ch (split //, $str){
+    push(@array, $ch);
+  }
+  print @array[0]."\n";
 }
